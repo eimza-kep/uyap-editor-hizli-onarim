@@ -29,6 +29,19 @@ sorunlarını **tek tıkla** otomatik olarak çözen açık kaynaklı Windows on
 2. İndirdiğiniz klasördeki **`fix-uyap.bat`** dosyasına **çift tıklayın**.
 3. İşlem saniyeler içinde tamamlanır ve UYAP Editör kullanıma hazır hale gelir.
 
+### Gelişmiş Komut Satırı Kullanımı (PowerShell)
+```powershell
+# Büyük dosyalarda kilitlenmeyi önlemek için Java bellek sınırını 2GB (2048 MB) yapma
+.\Fix-UyapEditor.ps1 -MemoryLimit 2048m
+
+# Onarım sonrası UYAP Editörünü hemen başlatma
+.\Fix-UyapEditor.ps1 -Launch
+
+# Dosya ilişkilendirmesini değiştirmeden sadece bozuk oturumları temizleme
+.\Fix-UyapEditor.ps1 -SkipAssociation
+```
+
+
 ---
 
 ## 📥 Resmi UYAP Doküman Editörü İndirme Bağlantıları
