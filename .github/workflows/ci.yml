@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  powershell-test:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test PowerShell Syntax
+      shell: pwsh
+      run: .\test_syntax.ps1
+    - name: Test Python Diagnostic Tool
+      run: python diagnose_uyap.py

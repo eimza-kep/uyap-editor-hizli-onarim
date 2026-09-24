@@ -1,6 +1,7 @@
 # UYAP Doküman Editörü (.udf) ve Java Onarım Aracı ⚖️📁
 
 [![Lisans: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI Tests](https://github.com/eimza-kep/uyap-editor-hizli-onarim/actions/workflows/ci.yml/badge.svg)](https://github.com/eimza-kep/uyap-editor-hizli-onarim/actions/workflows/ci.yml)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue.svg)](https://microsoft.com)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B%20%7C%207%2B-blueviolet.svg)](https://github.com/PowerShell/PowerShell)
 [![Portal](https://img.shields.io/badge/Adalet%20Bakanl%C4%B1%C4%9F%C4%B1-UYAP-red.svg)](https://uyap.gov.tr)
