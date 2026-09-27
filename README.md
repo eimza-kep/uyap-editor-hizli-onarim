@@ -1,67 +1,60 @@
-# UYAP Doküman Editörü (.udf) ve Java Onarım Aracı ⚖️📁
+# UYAP Doküman Editörü Hızlı Onarım & Teşhis Aracı ⚖️⚡
 
-[![Lisans: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI Tests](https://github.com/eimza-kep/uyap-editor-hizli-onarim/actions/workflows/ci.yml/badge.svg)](https://github.com/eimza-kep/uyap-editor-hizli-onarim/actions/workflows/ci.yml)
-[![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue.svg)](https://microsoft.com)
-[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B%20%7C%207%2B-blueviolet.svg)](https://github.com/PowerShell/PowerShell)
-[![Portal](https://img.shields.io/badge/Adalet%20Bakanl%C4%B1%C4%9F%C4%B1-UYAP-red.svg)](https://uyap.gov.tr)
+[![Lisans: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform: Win | Mac | Linux](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue.svg)](https://github.com)
+[![Blog](https://img.shields.io/badge/Rehber-UYAP%20Teknik%20Destek-red.svg)](https://uyap-teknik-destek.pages.dev/)
 
-Avukatların, hukuk bürolarının, adliye personelinin ve vatandaşların en çok karşılaştığı:
-
-> **"UDF dosyası çift tıklanınca açılmıyor / birlikte aç uyarısı veriyor"**  
-> **"UYAP Editör açılış ekranında takılı kalıyor / tepki vermiyor"**  
-> **"Java heap space / yetersiz bellek hatası"**
-
-sorunlarını **tek tıkla** otomatik olarak çözen açık kaynaklı Windows onarım aracıdır.
+Avukatlar, kâtipler ve bilirkişiler için **UYAP UDF Doküman Editörü açılmama, donma, gri ekranda kalma, Java bellek aşımı (`OutOfMemoryError`), ekran ölçekleme ve bozuk `.uyap` önbellek sorunlarını** tek tıkla onaran açık kaynaklı asistan.
 
 ---
 
-## 🛠️ Ne İşe Yarar?
+## ✨ Öne Çıkan Özellikler
 
-1. **UDF Dosya İlişkilendirmesini Onarır:** Windows Kayıt Defteri'nde (Registry) `.udf` uzantısını UYAP Editör'e bağlar. Artık dosyalara çift tıkladığınızda doğrudan UYAP açılır.
-2. **Bozuk Oturum Dosyalarını Temizler:** `%USERPROFILE%\.uyap` altındaki kilitlenmiş geçici `.tmp`, `.lock` ve bozuk önbellek dosyalarını temizleyerek açılış takılmalarını giderir.
-3. **Java Önbelleğini Sıfırlar:** UYAP e-imza bileşenlerinin güncel ve sorunsuz çalışması için eski applet önbelleğini temizler.
+* 🧹 **Tek Tıkla Önbellek Temizleme:** Bozulmuş UYAP geçici dosyalarını (`.uyap` ve Java cache) `--clear-cache` ile sıfırlar.
+* 🚀 **Yüksek Bellek (2GB RAM) Desteği:** 500+ sayfalık ağır dava dosyalarını açarken oluşan Java `OutOfMemoryError` çökmesini önlemek için optimize başlatıcı parametreleri (`-Xms512m -Xmx2048m`) sunar.
+* 🖥️ **Çoklu Platform:** Windows, macOS (Sequoia / Sonoma) ve Linux dağıtımlarında Java çalışma ortamını denetler.
+* 🔍 **UDF Dosya İlişkilendirme:** Windows'ta çift tıklandığında UDF dosyalarının otomatik açılmasını sağlar.
 
 ---
 
-## 🚀 Hızlı Kullanım
+## 🚀 Hızlı Başlangıç
 
-1. Repoyu yeşil **`Code > Download ZIP`** butonundan indirin.
-2. İndirdiğiniz klasördeki **`fix-uyap.bat`** dosyasına **çift tıklayın**.
-3. İşlem saniyeler içinde tamamlanır ve UYAP Editör kullanıma hazır hale gelir.
-
-### Gelişmiş Komut Satırı Kullanımı (PowerShell)
-```powershell
-# Büyük dosyalarda kilitlenmeyi önlemek için Java bellek sınırını 2GB (2048 MB) yapma
-.\Fix-UyapEditor.ps1 -MemoryLimit 2048m
-
-# Onarım sonrası UYAP Editörünü hemen başlatma
-.\Fix-UyapEditor.ps1 -Launch
-
-# Dosya ilişkilendirmesini değiştirmeden sadece bozuk oturumları temizleme
-.\Fix-UyapEditor.ps1 -SkipAssociation
+### 1. Sistem Teşhisi ve Durum Raporu
+```bash
+python diagnose_uyap.py
 ```
 
+### 2. Bozuk Önbelleği Temizleme (Hemen Onar)
+```bash
+python diagnose_uyap.py --clear-cache
+```
+
+### 3. Windows PowerShell Tek Tıkla Onarım
+```powershell
+powershell -ExecutionPolicy Bypass -File .\Fix-UyapEditor.ps1
+```
 
 ---
 
-## 📥 Resmi UYAP Doküman Editörü İndirme Bağlantıları
+## 🔗 E-Dönüşüm & LegalTech Açık Kaynak Ekosistemi
 
-Eğer sisteminizde UYAP Editör hiç kurulu değilse, Adalet Bakanlığı'nın resmi güncel sürümlerini indirebilirsiniz:
+Bu araç [eimza-kep](https://github.com/eimza-kep) organizasyonunun açık kaynak LegalTech ekosisteminin bir parçasıdır:
 
-* 🏛️ [Adalet Bakanlığı UYAP Editör İndirme Sayfası](https://uyap.gov.tr/Uyap-Editor)
-* ⚖️ [UYAP Avukat Portalı](https://avukat.uyap.gov.tr/)
-* 👤 [UYAP Vatandaş Portalı](https://vatandas.uyap.gov.tr/)
+* 📝 **[udf2md](https://github.com/eimza-kep/udf2md):** UYAP UDF dosyalarını yapay zekanın (LLM/RAG) okuyabileceği Markdown ve JSON formatına dönüştürücü.
+* 🖥️ **[uyap-web-udf-editor](https://github.com/eimza-kep/uyap-web-udf-editor):** Tarayıcıda Java gerektirmeden çalışan açık kaynak web UDF editörü.
+* ☕ **[gib-java-guvenlik-cozucu](https://github.com/eimza-kep/gib-java-guvenlik-cozucu):** UYAP ve GİB Java güvenlik istisna ekleyici.
+* ⚖️ **[avukat-muvekkil-on-kayit-scripti](https://github.com/eimza-kep/avukat-muvekkil-on-kayit-scripti):** Avukatlar için müvekkil ön görüşme ve çıkar çatışması kontrol portalı.
+* 📊 **[avukat-hukuk-excel-hesaplamalari](https://github.com/eimza-kep/avukat-hukuk-excel-hesaplamalari):** Avukatlar için serbest meslek makbuzu, kıdem ve vekalet ücreti hesaplayıcı şablonlar.
+
+---
+
+## 📚 İlgili Teknik Rehberler
+* 📄 [UYAP Editör Açılmıyor Hatası ve Java Bellek Sorunları Kesin Çözüm](https://uyap-teknik-destek.pages.dev/yazilar/uyap-editor-acilmiyor-hatasi-kesin-cozum.html)
+* 📄 [UDF Dosyası Nedir ve Telefondan/Mac'ten Nasıl Açılır?](https://uyap-teknik-destek.pages.dev/yazilar/udf-dosyasi-nedir-telefondan-nasil-acilir.html)
+* 📄 [DYS Doküman Yönetim Sistemi ve E-İmza Entegrasyonu Hataları](https://uyap-teknik-destek.pages.dev/yazilar/dys-dokuman-yonetim-sistemi-eimza-entegrasyonu.html)
 
 ---
 
 ## ⚖️ Lisans
 
-Bu proje [MIT Lisansı](LICENSE) kapsamında tamamen ücretsiz ve açık kaynaklıdır.
-
-
-### 📚 İlgili Rehber ve Çözümler
-* 📄 [UYAP Doküman Editörü (.udf) Açılmıyor Sorununda Java Bellek Ayarı](https://uyap-teknik-destek.pages.dev/yazilar/uyap-dokuman-editoru-udf-acilmiyor-java-bellek-ayari.html)
-* 📄 [UYAP Avukat Portala Girişte 'Kart Okuyucu Bulunamadı' Hatası Çözümü](https://uyap-teknik-destek.pages.dev/yazilar/uyap-avukat-portal-kart-okuyucu-bulunamadi-hatasi.html)
-* 📄 [e-Duruşmaya Katılırken Mikrofon ve Kamera İzinleri Nasıl Ayarlanır?](https://uyap-teknik-destek.pages.dev/yazilar/e-durusmaya-katilirken-mikrofon-kamera-izinleri.html)
-* 📄 [UDF Formatındaki Dava Dilekçesi PDF'e Nasıl Dönüştürülür?](https://uyap-teknik-destek.pages.dev/yazilar/udf-formatindaki-dava-dilekcesi-pdf-donusturme.html)
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
