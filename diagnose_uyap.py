@@ -14,7 +14,7 @@ bozuk önbellek klasörlerini (`.uyap`, Java cache) denetler; bellek aşımı
 - Yüksek bellekli başlatıcı komutu üretme (--high-mem)
 - JSON ve Markdown formatında raporlama
 
-Yazar: E-İmza & Dijital Dönüşüm Portalı (https://uyap-teknik-destek.pages.dev/)
+Yazar: E-İmza & Dijital Dönüşüm Portalı (https://uyapteknikdestek.site/)
 Lisans: MIT
 """
 

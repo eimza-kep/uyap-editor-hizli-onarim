@@ -8,7 +8,7 @@
     yaşanan kilitlenme/yetersiz bellek (OutOfMemory) sorunlarını otomatik onarır.
 
 .NOTES
-    Yazar: E-İmza & Dijital Dönüşüm Portalı (https://uyap-teknik-destek.pages.dev/yazilar/uyap-dokuman-editoru-udf-acilmiyor-java-bellek-ayari.html)
+    Yazar: E-İmza & Dijital Dönüşüm Portalı (https://uyapteknikdestek.site/yazilar/uyap-dokuman-editoru-udf-acilmiyor-java-bellek-ayari.html)
     Lisans: MIT
 #>
 
