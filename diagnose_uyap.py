@@ -79,12 +79,18 @@ def find_uyap_editor():
 def get_cache_directories():
     home = os.path.expanduser("~")
     sys_name = platform.system()
-    dirs = [os.path.join(home, ".uyap"), os.path.join(home, ".oracle_jre_usage")]
+    dirs = [
+        os.path.join(home, ".uyap"),
+        os.path.join(home, ".uyap_cache"),
+        os.path.join(home, ".oracle_jre_usage")
+    ]
     
     if sys_name == "Windows":
         dirs.append(os.path.join(home, "AppData", "Local", "Sun", "Java", "Deployment", "cache"))
+        dirs.append(os.path.join(home, "AppData", "Roaming", "UYAP", "cache"))
     elif sys_name == "Darwin":
         dirs.append(os.path.join(home, "Library", "Caches", "Oracle", "Java", "Deployment", "cache"))
+        dirs.append(os.path.join(home, "Library", "Application Support", "UYAP", "cache"))
     else:
         dirs.append(os.path.join(home, ".java", "deployment", "cache"))
 
