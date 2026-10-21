@@ -34,6 +34,18 @@ python diagnose_uyap.py --clear-cache
 powershell -ExecutionPolicy Bypass -File .\Fix-UyapEditor.ps1
 ```
 
+### 4. macOS (Apple Silicon M1/M2/M3/M4 & Intel) ve Linux Tek Tıkla Onarım
+```bash
+chmod +x fix-uyap.sh
+./fix-uyap.sh --clear-cache
+```
+
+VEYA yüksek bellek (2GB RAM) ile doğrudan başlatmak için:
+```bash
+./fix-uyap.sh --launch
+```
+*macOS üzerinde Homebrew OpenJDK 8 (`/opt/homebrew/opt/openjdk@8`) otomatik algılanır ve UYAP UDF Doküman Editörü donma/gri ekran olmaksızın çalıştırılır.*
+
 ---
 
 ## 🔗 E-Dönüşüm & LegalTech Açık Kaynak Ekosistemi

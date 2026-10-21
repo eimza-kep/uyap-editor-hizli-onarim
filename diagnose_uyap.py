@@ -35,13 +35,35 @@ except Exception:
     pass
 
 def check_java():
+    # 1. Standart PATH üzerinden dene
     try:
         res = subprocess.run(["java", "-version"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
         out = res.stderr or res.stdout
         first_line = out.strip().split("\n")[0] if out else "Bilinmiyor"
-        return {"installed": True, "version_string": first_line}
+        return {"installed": True, "version_string": first_line, "path": "java"}
     except Exception:
-        return {"installed": False, "version_string": None}
+        pass
+
+    # 2. macOS Homebrew ve Linux JVM dizinlerini tara
+    fallback_paths = [
+        "/opt/homebrew/opt/openjdk@8/bin/java",
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "/opt/homebrew/opt/openjdk@17/bin/java",
+        "/opt/homebrew/bin/java",
+        "/usr/local/opt/openjdk@8/bin/java",
+        "/usr/lib/jvm/default-java/bin/java"
+    ]
+    for fb in fallback_paths:
+        if os.path.exists(fb) and os.access(fb, os.X_OK):
+            try:
+                res = subprocess.run([fb, "-version"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+                out = res.stderr or res.stdout
+                first_line = out.strip().split("\n")[0] if out else "Bilinmiyor"
+                return {"installed": True, "version_string": first_line, "path": fb}
+            except Exception:
+                pass
+
+    return {"installed": False, "version_string": None, "path": None}
 
 def find_uyap_editor():
     candidates = []
@@ -59,8 +81,12 @@ def find_uyap_editor():
         candidates = [
             "/Applications/UYAP Editor.app",
             "/Applications/UyapEditor.app",
+            "/Applications/UYAP.app",
+            "/Applications/UyapDokumanEditor.app",
+            "/Applications/UYAP Doküman Editörü.app",
             os.path.expanduser("~/Applications/UYAP Editor.app"),
-            "/Applications/UYAP Doküman Editörü.app"
+            os.path.expanduser("~/Applications/UYAP Doküman Editörü.app"),
+            os.path.expanduser("~/uyap/editor.jar")
         ]
     else: # Linux
         candidates = [
