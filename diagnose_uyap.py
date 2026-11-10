@@ -370,6 +370,20 @@ def run_diagnostics():
         "recommended_command": "java -Xms512m -Xmx2048m -Dsun.java2d.uiScale=1.0 -jar <editor.jar>"
     }
 
+
+def clean_javaws_cache():
+    """Java Web Start geçici önbelleğini temizler."""
+    import shutil
+    user_home = os.path.expanduser("~")
+    javaws_dir = os.path.join(user_home, "AppData", "LocalLow", "Sun", "Java", "Deployment", "cache")
+    if os.path.exists(javaws_dir):
+        try:
+            shutil.rmtree(javaws_dir)
+            return True
+        except Exception:
+            return False
+    return False
+
 def main():
     parser = argparse.ArgumentParser(description="UYAP Doküman Editörü, Java Teşhis ve Taşınabilir Paketleyici v1.3")
     parser.add_argument("--json", action="store_true", help="JSON formatında çıktı verir")
